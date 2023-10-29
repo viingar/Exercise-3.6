@@ -8,7 +8,19 @@ public class Main {
         for (int i = 0; i < 5; i++) {
             System.out.print("Введите имя пользователя: ");
             String name = scanner.nextLine();
+            if (name.isEmpty()) {
+                System.out.println("Ошибка: имя пользователя не может быть пустым");
+                i--;
+                continue;
+            }
+
             System.out.print("Введите возраст пользователя: ");
+            if (!scanner.hasNextInt()) {
+                System.out.println("Ошибка: возраст должен быть целым числом");
+                i--;
+                scanner.nextLine();
+                continue;
+            }
             int age = scanner.nextInt();
             scanner.nextLine();
             User user = new User(name, age);
